@@ -1,16 +1,21 @@
-from rest_framework import generics
-from .models import Event
-from .serializers import EventSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets, permissions, generics, mixins
+from rest_framework.viewsets import GenericViewSet
+
+from .models import Event, EventRegistration
+from .serializers import EventSerializer, EventRegistrationSerializer
 
 
-class EventListCreateView(generics.ListCreateAPIView):
+class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class EventRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-    permission_classes = [IsAuthenticated]
+class EventRegistrationViewSet(
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    GenericViewSet,
+):
+    queryset = EventRegistration.objects.all()
+    serializer_class = EventRegistrationSerializer
+    permission_classes = [permissions.IsAuthenticated]
