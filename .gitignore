@@ -345,5 +345,5 @@ poetry.toml
 # ruff
 .ruff_cache/
 
-# LSP config files
+# LSP event_manager files
 pyrightconfig.json

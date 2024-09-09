@@ -1,5 +1,5 @@
 """
-ASGI config for event_manager project.
+ASGI event_manager for event_manager project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

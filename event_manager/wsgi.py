@@ -1,5 +1,5 @@
 """
-WSGI config for event_manager project.
+WSGI event_manager for event_manager project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
